@@ -1,0 +1,47 @@
+# test: The root level block that contains the benchmark test information.
+
+# name: The name of the test, in this case “basic-contract-benchmark”.
+
+# description: A description for the benchmark, in this case “A test benchmark”.
+
+# workers: A set of keys used to define the number of workers (separate worker client instances) used in the subsequent benchmark.
+
+# rounds: An array of distinct test rounds that will be progressed sequentially. Rounds may be used to benchmark different smart contract methods, or the same method in a different manner.
+#
+# We will be using two separate workers, this is accomplished through the workers specification:
+
+#   type: local
+#   number: 2
+# 
+# Each round block contains the following:
+
+#     label - the unique header label to use for the round.
+#     description - a description of the round being run.
+#     txDuration - the specification of the test duration, in seconds
+#     rateControl - a rate control type, with options.
+#     workload - the workload module to use, with arguments to pass to the module. All arguments passed are available as roundArguments within the workload module.
+
+# We will specify a benchmark round labeled readAsset, with the description Query asset benchmark, to run for a 30s duration, using a fixed-load rate controller aiming to maintain a constant transaction pressure of 2. Additionally we will be providing a workload through specification of our readAsset.js workload file, which we will pass the arguments {assets: 10, contractId: asset-transfer-basic}.
+#
+test:
+    name: basic-contract-benchmark
+    description: test benchmark
+    workers:
+      type: local
+      number: 2
+    rounds:
+      - label: readAsset
+        description: Read asset benchmark
+        txDuration: 30
+        rateControl: 
+          type: fixed-load
+          opts:
+            transactionLoad: 2
+        workload:
+          module: workload/readAsset.js
+          arguments:
+            assets: 10
+            contractId: basic
+
+
+

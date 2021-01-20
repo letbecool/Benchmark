@@ -1,0 +1,35 @@
+# #The name for the configuration, in this instance “Caliper test”.
+# name: Caliper test
+# #version: The version of the configuration file being used. “2.0.0” ensures the new fabric connectors are used
+# version: "2.0.0"
+# #caliper: Indicates to Caliper the SUT that is being targeted, and may contain additional start/end commands or sut specific options that are not required within this tutorial. For the purposes of this tutorial, we are targeting a fabric network.
+# caliper:
+#   blockchain: fabric
+# #channels: Describes the Hyperledger Fabric channels and the smart contracts deployed on these channels to be benchmarked.
+# channels:
+# #organizations: A list of the Hyperledger Fabric organizations with identities and connection profiles associated with each organization
+# organizations:
+
+name: Calier test
+version: "2.0.0"
+
+caliper:
+  blockchain: fabric
+
+channels:
+  - channelName: mychannel
+    contracts:
+    - id: basic
+
+organizations:
+  - mspid: Org1MSP
+    identities:
+      certificates:
+      - name: 'User1'
+        clientPrivateKey:
+          path: '../fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore/priv_sk'
+        clientSignedCert:
+          path: '../fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/signcerts/User1@org1.example.com-cert.pem'
+    connectionProfile:
+      path: '../fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.yaml'
+      discover: true
