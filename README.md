@@ -1,5 +1,10 @@
 # Benchmark
- 
+# This is sample setup on single machine. This report is generted form the latest code given here in repository. Please use fabric-sample/test-network (v2.2) for network.
+# For lunch caliper (0.4.2): 
+# gopal@gopal:~/workspace/newcalliper/caliper-workspace$ npx caliper launch manager --caliper-workspace ./ --caliper-networkconfig networks/networkConfig.yaml --caliper-benchconfig benchmarks/myAssetBenchmark.yaml --caliper-flow-only-test --caliper-fabric-gateway-enabled
+# For more detail please see, https://hyperledger.github.io/caliper/v0.4.2/fabric-tutorial/tutorials-fabric-existing/ 
+
+
 2021.01.20-15:28:37.055 info  [caliper] [default-observer]      [readAsset Round 0 Transaction Info] - Submitted: 0 Succ: 0 Fail:0 Unfinished:0
 2021.01.20-15:28:37.061 info  [caliper] [report-builder]        ### Test result ###
 2021.01.20-15:28:37.090 info  [caliper] [report-builder] 
